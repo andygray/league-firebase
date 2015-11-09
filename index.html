@@ -54,11 +54,11 @@
             <div class="title">Results</div>
 
             <ul id="resultList">
-                <li class="resultbox" ng-cloak ng-repeat="(key, fixture) in data.fixtures">
-                        <span class="timeStamp">
-                            <em>{{fixture.timestamp | date:'dd MMM yyyy'}}</em>
-                            <span class="pull-right">{{fixture.result}}</span>
-                        </span>
+                <li class="resultbox" ng-cloak ng-repeat="fixture in data.fixtures">
+                    <span class="timeStamp">
+                        <em>{{fixture.timestamp | date:'dd MMM yyyy'}}</em>
+                        <span class="pull-right">{{fixture.result}}</span>
+                    </span>
                 </li>
             </ul>
 
@@ -95,6 +95,16 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div>
+            <div class="title">Results</div>
+
+            <ul id="resultListWithDelete">
+                <li class="resultbox" ng-cloak ng-repeat="(key, fixture) in data.fixtures">
+                    <em>{{fixture.timestamp | date:'dd MMM yyyy'}}</em>: {{fixture.result}}
+                    <a href="#" ng-click="deleteFixture(key)" style="padding-left: 30px;">[Remove]</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -176,9 +186,9 @@
                 $scope.showFixtures = false;
             };
 
-            // $scope.deleteFixture = function(id) {
-            //     new Firebase(FB_ROOT + '/fixtures/' + id).remove();
-            // };
+            $scope.deleteFixture = function(id) {
+                 new Firebase(FB_ROOT + '/fixtures/' + id).remove();
+            };
         }
     ]);
 </script>
