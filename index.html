@@ -120,7 +120,7 @@
             var FB_ROOT = 'https://winterleague.firebaseIO.com';
             var data_ref = new Firebase(FB_ROOT);
             $scope.data = $firebase(data_ref);
-            $scope.showFixtures = false;
+            $scope.loading = true;
 
             $scope.generateTable = function () {
                 var table = {};
